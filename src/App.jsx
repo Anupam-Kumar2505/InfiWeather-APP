@@ -1,19 +1,13 @@
-import React from "react";
 import "./index.css";
-import "./App.css";
-import Header from "./components/Header";
-import MainContent from "./components/MainContent";
-import BottomSection from "./components/BottomSection";
+import NavBar from "./components/NavBar";
+import TempDisplay from "./components/TempDisplay";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#281e4c] bg-[url(../public/Icons/Group_1.png)] bg-[center_140px]  bg-contain bg-no-repeat m-0 font-orbitron">
-      <Header />
-
-      <MainContent />
-      {/* Bottom Section */}
-
-      <BottomSection />
+    // TODO: Weird Background in mobile landscape mode
+    <div className="min-h-screen-svh bg-[#281e4c] bg-[url(/icons/Group_1.png)] bg-[center_140px] bg-contain bg-no-repeat m-0 font-orbitron text-white">
+      <NavBar />
+      <TempDisplay />
     </div>
   );
 }
