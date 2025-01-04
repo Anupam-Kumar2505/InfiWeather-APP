@@ -6,7 +6,7 @@ function TimeWiget(props) {
   return (
     <div className="flex bg-[#6969A6] rounded-3xl py-2 px-3 text-base">
       <span>{props.label}</span>
-      <img className="h-6 mx-2" src="/icons/aqi-line.svg" />
+      <img className="h-6 mx-1.5" src="/icons/aqi-line.svg" />
       <span>{props.time}</span>
     </div>
   );
