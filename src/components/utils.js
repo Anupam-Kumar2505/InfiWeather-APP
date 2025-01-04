@@ -9,7 +9,7 @@ export function getAltFromPath(path) {
         return "image";
     }
 
-    let filenameParts = path.split("/").pop().split(".");
+    const filenameParts = path.split("/").pop().split(".");
     return filenameParts.length > 1
         ? filenameParts.slice(0, -1).join(".")
         : filenameParts[0] || "image";

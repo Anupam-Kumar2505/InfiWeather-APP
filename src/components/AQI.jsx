@@ -4,7 +4,7 @@ import { getAltFromPath } from "./utils";
 
 function Parameter(props) {
   return (
-    <div className="bg-[#7F7EB9] flex items-center justify-between py-4 px-4 rounded-2xl text-2xl">
+    <div className="bg-[#7F7EB9] flex items-center justify-between p-4 rounded-2xl text-2xl">
       <img
         className="h-[38px]"
         src={props.icon}
@@ -21,7 +21,7 @@ Parameter.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default function Forcast() {
+export default function AQI() {
   return (
     <Hero title="Air Quality">
       <div className="grid grid-cols-2 gap-4">

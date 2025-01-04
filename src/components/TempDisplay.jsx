@@ -1,6 +1,6 @@
 export default function TempDisplay() {
   return (
-    <div className="flex justify-center gap-10 md:gap-20 my-14">
+    <div className="flex justify-center gap-10 md:gap-20 mt-12 mb-14">
       <img src="/icons/left-arrow.svg" alt="left-arrow" />
       <div className="text-center">
         <span className="block text-7xl md:text-8xl">36</span>

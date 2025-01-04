@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
 export default function Hero(props) {
-  props.className = props.className || "";
   return (
     <section
       className={
-        props.className +
-        "w-full text-center bg-[#9EC0F680] pt-4 pb-8 px-3 rounded-[3rem] max-w-[20rem]"
+        props.className ||
+        "" +
+          "w-full text-center bg-[#9EC0F680] pt-4 pb-6 px-4 rounded-[3rem] max-w-[21rem]"
       }
     >
       <h2 className="text-xl">{props.title}</h2>

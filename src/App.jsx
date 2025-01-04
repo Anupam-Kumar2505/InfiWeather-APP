@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import TempDisplay from "./components/TempDisplay";
 import Forcast from "./components/Forecast";
 import AQI from "./components/AQI";
+import SunAndMoon from "./components/SunAndMoon";
 
 function App() {
   return (
@@ -10,11 +11,10 @@ function App() {
       <NavBar />
       <main>
         <TempDisplay />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-evenly px-8 justify-items-center pb-8 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-evenly px-8 justify-items-center mb-8 gap-6">
           <Forcast />
           <AQI />
-          {/*TODO: Make the Rise and Set timings*/}
-          <Forcast />
+          <SunAndMoon />
         </div>
       </main>
     </div>
