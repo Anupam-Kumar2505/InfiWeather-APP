@@ -1,8 +1,13 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   mode: "jit",
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
-    extend: {},
+    extend: {
+      minHeight:{
+        "screen-svh":"100svh"
+      }
+    },
   },
   variants: {},
   plugins: [],

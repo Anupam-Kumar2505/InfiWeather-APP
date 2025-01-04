@@ -1,29 +1,33 @@
-const Forecast = () => {
+import Hero from "./Hero";
+import PropTypes from "prop-types";
+import { getAltFromPath } from "./utils";
+
+function Day(props) {
   return (
-    <div className="flex flex-col items-center bg-[#9EC0F6]/50 bg-[length:100%] bg-no-repeat p-[16px] w-fit h-fit rounded-[50px] ">
-      <div className="text-xl mb-[5px] text-white">Forecast</div>
-      <div className="border-b-4 w-[256px] border-[#907fcc] border-solid"></div>
-      <div>
-        <div className="py-[16px] px-[14px] rounded-[25px] w-[254px] h-[63px] bg-[#7F7EB9] bg-[length:100%] flex items-center justify-around content-center my-[20px] mx-0">
-          <p className="flex-1 pl-[24px] text-[20px] font-medium text-white">
-            Monday
-          </p>
-          <img src="../public/Icons/weather-desc/cloudy.svg" alt="Cloudy" />
-        </div>
-        <div className="py-[16px] px-[14px] rounded-[25px] w-[254px] h-[63px] bg-[#7F7EB9] bg-[length:100%] flex items-center justify-around content-center my-[20px] mx-0">
-          <p className="flex-1 pl-[24px] text-[20px] font-medium text-white">
-            Tuesday
-          </p>
-          <img src="../public/Icons/weather-desc/cloudy.svg" alt="Cloudy" />
-        </div>
-        <div className="py-[16px] px-[14px] rounded-[25px] w-[254px] h-[63px] bg-[#7F7EB9] bg-[length:100%] flex items-center justify-around content-center my-[20px] mx-0">
-          <p className="flex-1 pl-[24px] text-[20px] font-medium text-white">
-            Wednesday
-          </p>
-          <img src="../public/Icons/weather-desc/cloudy.svg" alt="Cloudy" />
-        </div>
-      </div>
+    <div className="bg-[#7F7EB9] flex items-center justify-between py-4 pl-10 pr-6 rounded-2xl text-2xl">
+      <span>{props.day || "Day"}</span>
+      <img
+        className="h-[38px]"
+        src={props.icon}
+        alt={getAltFromPath(props.icon)}
+      />
     </div>
   );
+}
+
+Day.propTypes = {
+  icon: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
 };
-export default Forecast;
+
+export default function Forcast() {
+  return (
+    <Hero title="Forecast">
+      <div className="flex flex-col gap-4">
+        <Day icon="/icons/weather-desc/cloudy.svg" day="Monday" />
+        <Day icon="/icons/weather-desc/cloudy.svg" day="Monday" />
+        <Day icon="/icons/weather-desc/cloudy.svg" day="Monday" />
+      </div>
+    </Hero>
+  );
+}

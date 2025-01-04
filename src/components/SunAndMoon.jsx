@@ -1,61 +1,77 @@
-const SunAndMoon = () => {
+import Hero from "./Hero";
+import PropTypes from "prop-types";
+import { getAltFromPath } from "./utils";
+
+function TimeWiget(props) {
   return (
-    <div className="flex flex-col items-center bg-[#9EC0F6]/50  p-[16px] w-fit h-full rounded-[50px]">
-      <div className="text-xl mb-[5px] text-white">Sun and Moon</div>
-      <div className="border-b-4 w-[256px] border-[#907fcc] border-solid"></div>
-      <div className="h-[265px]  mt-[10px] w-full flex flex-col items-center ">
-        <div className="h-full my-[13px] flex flex-col w-[280px] rounded-[25px] py-[12px] px-[5%]  bg-[#9998e3] justify-center items-center ">
-          <div className="gap-x-[35px] flex items-center w-full flex-row justify-between">
-            <img
-              className="pl-[20px] w-16"
-              src="../public/Icons/sun-moon/sun.svg"
-              alt="Sun"
-            />
-            <div className="text-lg font-medium pr-4 text-right flex-1 text-white">
-              <p>12 hrs</p>
-              <p>27 min</p>
-            </div>
-          </div>
-          <div className="border-b-2 w-[90%] border-[#281E4C46] border-solid"></div>
-          <div className="flex flex-row items-center pt-2 justify-between w-full text-4 h-[37px] gap-x-4">
-            <div className="flex-1 rounded-[19px] h-[30px] bg-[#6969A6] flex items-center justify-between py-[4px] px-[10px] text-white text-[15px]">
-              <p>rise</p>
-              <p>6:27</p>
-            </div>
-            <div className="h-[90%] m-0 border-l-[2px] border-solid border-white"></div>
-            <div className="flex-1 rounded-[19px] h-[30px] bg-[#6969A6] flex items-center justify-between py-[4px] px-[10px] text-white text-[15px]">
-              <p>set</p>
-              <p>6:54</p>
-            </div>
-          </div>
+    <div className="flex bg-[#6969A6] rounded-3xl py-2 px-3 text-base">
+      <span>{props.label}</span>
+      <img className="h-6 mx-2" src="/icons/aqi-line.svg" />
+      <span>{props.time}</span>
+    </div>
+  );
+}
+
+TimeWiget.propTypes = {
+  label: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+};
+
+function CelestialBody(props) {
+  return (
+    <div className="bg-[#9D8ED2] bg-opacity-50 rounded-3xl py-2 px-4">
+      <div className="flex justify-between items-center px-4">
+        <img
+          className="h-[38px]"
+          src={props.icon}
+          alt={getAltFromPath(props.icon)}
+        />
+        <div>
+          <div className="text-lg leading-6 w-22">{props.noteLine1}</div>
+          <div className="text-lg leading-6 w-22">{props.noteLine2}</div>
         </div>
-        <div className="h-full  flex flex-col w-[280px] rounded-[25px] pb-[12px] px-[5%]  bg-[#9998e3] justify-center items-center ">
-          <div className="gap-x-[35px] flex items-center w-full flex-row justify-between">
-            <img
-              className="pl-[20px] w-16"
-              src="../public/Icons/sun-moon/moon.svg"
-              alt="Sun"
-            />
-            <div className="text-lg font-medium pr-4 text-right flex-1 text-white">
-              <p>Waning</p>
-              <p>Crescent</p>
-            </div>
-          </div>
-          <div className="border-b-2 w-[90%] border-[#281E4C46] border-solid"></div>
-          <div className="flex flex-row items-center pt-2 justify-between w-full text-4 h-[37px] gap-x-4">
-            <div className="flex-1 rounded-[19px] h-[30px] bg-[#6969A6] flex items-center justify-between py-[4px] px-[10px] text-white text-[15px]">
-              <p>rise</p>
-              <p>5:20</p>
-            </div>
-            <div className="h-[90%] m-0 border-l-[2px] border-solid border-white"></div>
-            <div className="flex-1 rounded-[19px] h-[30px] bg-[#6969A6] flex items-center justify-between py-[4px] px-[10px] text-white text-[15px]">
-              <p>set</p>
-              <p>5:44</p>
-            </div>
-          </div>
-        </div>
+      </div>
+      <img
+        className="mx-auto w-[100%] my-2"
+        src="/icons/rise-set-line.svg"
+        alt="rise-set-line"
+      />
+      <div className="flex justify-between">
+        {/* TODO: Fix the TimeWiget for Z Fold. It overflows :( */}
+        <TimeWiget label="Rise" time={props.rise} />
+        <TimeWiget label="Set" time={props.set} />
       </div>
     </div>
   );
+}
+
+CelestialBody.propTypes = {
+  icon: PropTypes.string.isRequired,
+  noteLine1: PropTypes.string.isRequired,
+  noteLine2: PropTypes.string.isRequired,
+  rise: PropTypes.string.isRequired,
+  set: PropTypes.string.isRequired,
 };
-export default SunAndMoon;
+
+export default function SunAndMoon() {
+  return (
+    <Hero title="Sun and Moon">
+      <div className="flex flex-col gap-4">
+        <CelestialBody
+          icon="/icons/sun-moon/sun.svg"
+          noteLine1="12 hrs"
+          noteLine2="27 mins"
+          rise="06:00"
+          set="18:00"
+        />
+        <CelestialBody
+          icon="/icons/sun-moon/moon.svg"
+          noteLine1="waning"
+          noteLine2="crescent"
+          rise="18:00"
+          set="06:00"
+        />
+      </div>
+    </Hero>
+  );
+}
